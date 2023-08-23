@@ -1,1 +1,1 @@
-#source "$BR2_EXTERNAL_XGO2_PATH/package/Config.in"
+source "$BR2_EXTERNAL_XGO2_BUILDROOT_PATH/package/python-xgo-pythonlib/Config.in"
