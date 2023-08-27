@@ -1,1 +1,1 @@
-include $(sort $(wildcard $(BR2_XGO2_PATH)/package/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_XGO2_BUILDROOT_PATH)/package/*/*.mk))

@@ -26,9 +26,9 @@ gpu_mem_1024=100
 dtoverlay=miniuart-bt
 
 # enable autoprobing of Bluetooth driver without need of hciattach/btattach
-dtoverlay=krnbt=on
+#dtoverlay=krnbt=on
 
-dtoverlay=vc4-kms-v3d-pi4
+#dtoverlay=vc4-kms-v3d-pi4
 #dtoverlay=imx219
 dtoverlay=ov5647
 #dtoverlay=dwc2,dr_mode=host
@@ -41,4 +41,3 @@ arm_64bit=1
 # This line should be removed if the legacy DWC2 controller is required
 # (e.g. for USB device mode) or if USB support is not required.
 otg_mode=1
-

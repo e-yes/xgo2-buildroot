@@ -1,0 +1,14 @@
+[Unit]
+Description=WPA supplicant
+Before=network.target
+After=dbus.service
+Wants=network.target
+
+[Service]
+Type=dbus
+BusName=fi.w1.wpa_supplicant1
+ExecStart=/usr/sbin/wpa_supplicant -iwlan0 -Dnl80211 -c/etc/wpa_supplicant.conf -s -u -O /run/wpa_supplicant
+
+[Install]
+WantedBy=multi-user.target
+Alias=dbus-fi.w1.wpa_supplicant1.service
