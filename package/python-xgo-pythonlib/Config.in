@@ -1,0 +1,13 @@
+config BR2_PACKAGE_PYTHON_XGO_PYTHONLIB
+	bool "python-xgo-pythonlib"
+	select BR2_PACKAGE_OPENCV3
+	select BR2_PACKAGE_OPENCV3_LIB_PYTHON
+	select BR2_PACKAGE_PYTHON3
+	select BR2_PACKAGE_PYTHON3_SSL
+	select BR2_PACKAGE_PYTHON_PILLOW
+	select BR2_PACKAGE_PYTHON_SERIAL
+	select BR2_PACKAGE_PYTHON_SPIDEV
+	help
+	  PythonLib for XGO2-DOG.
+
+	  https://github.com/Xgorobot/XGO-PythonLib
