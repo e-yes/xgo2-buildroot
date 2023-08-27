@@ -1,0 +1,29 @@
+on: workflow_dispatch
+jobs:
+  build-all:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        config: [ xgo2_defconfig ]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: xgo2-buildroot
+      - uses: actions/checkout@v3
+        with:
+          repository: buildroot/buildroot
+          ref: 2023.08-rc2
+          path: buildroot
+      - name: Configure Buildroot
+        run: tree ../../ && make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output ${{ matrix.config }}
+      - name: Build Buildroot
+        run: make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output
+      - name: Run legal-info
+        run: make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output legal-info
+      - name: Compress sdcard.img
+        run: gzip -9 output/images/sdcard.img
+      - name: Store images
+        uses: actions/upload-artifact@v3
+        with:
+          name: image-${{ matrix.config }}
+          path: output/images/sdcard.img.gz
