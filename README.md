@@ -7,6 +7,8 @@
  /_/ \_\_____|\____/____|     |_| |_| |_|_|_| |_|_|
 ```
 
+![example workflow](https://github.com/e-yes/xgo2-buildroot/actions/workflows/buildroot-external-xgo2.yml/badge.svg)
+
 ### Build
 
 ```sh
