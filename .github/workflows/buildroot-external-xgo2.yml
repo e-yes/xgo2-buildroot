@@ -1,4 +1,9 @@
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'master'
+      - 'releases/v*'
 jobs:
   build-all:
     runs-on: ubuntu-22.04
@@ -18,8 +23,6 @@ jobs:
         run: tree ../../ && make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output ${{ matrix.config }}_defconfig
       - name: Build Buildroot
         run: make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output
-      - name: Run legal-info
-        run: make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output legal-info
       - name: Compress sdcard.img
         run: gzip -9 output/images/sdcard.img
       - name: Store images
