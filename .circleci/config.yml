@@ -1,0 +1,47 @@
+version: 2.1
+
+jobs:
+  build-all:
+    machine: true
+    resource_class: e-yes/xgo2-buildroot
+
+    steps:
+      - checkout
+
+      - run:
+          name: Clone Buildroot
+          command: |
+            git  --git-dir=buildroot/.git pull || git clone --branch 2023.08.x --depth 1 https://github.com/buildroot/buildroot.git buildroot
+
+      - run:
+          name: Configure Buildroot
+          command: |
+            make -C buildroot BR2_EXTERNAL=.. O=../output xgo2_defconfig
+
+      - run:
+          name: Build Buildroot
+          command: make -C buildroot BR2_EXTERNAL=.. O=../output
+
+      - run:
+          name: Compress sdcard.img
+          command: | 
+            rm -f output/images/sdcard*img.gz
+            gzip -9 -f output/images/sdcard.img
+            git config --global --add safe.directory /var/opt/circleci/workdir
+            export TAG=$(git describe --tags --always)
+            mv output/images/sdcard.img.gz output/images/sdcard-$TAG.img.gz
+
+      - store_artifacts:
+          path: output/images
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-all:
+          filters:
+            branches:
+              only:
+                - master
+                - /releases\/v.*/
+                - develop

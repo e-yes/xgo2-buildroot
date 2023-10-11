@@ -2,7 +2,7 @@
 
 ![XGO2 mini/lite software](./res/catdog.jpg)
 
-[![xgo2 mini/lite](https://github.com/e-yes/xgo2-buildroot/actions/workflows/xgo2-buildroot.yml/badge.svg)](https://github.com/e-yes/xgo2-buildroot/actions/workflows/xgo2-buildroot.yml)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/e-yes/xgo2-buildroot.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/e-yes/xgo2-buildroot/)
 
 ## Build
 
@@ -18,6 +18,8 @@ make -j # you can specify how many CPU cores it can use for build
 ```
 
 ## Install
+
+Download the image and burn it to the SD card
 
 ```sh
 unzip image_xgo2.zip && gunzip sdcard.img.gz
@@ -57,7 +59,7 @@ Starting arp-scan 1.9.7 with 256 hosts (https://github.com/royhills/arp-scan)
 
 ## Contributing
 
-PRs accepted.
+Accepted pull requests as well as kicks are welcome.
 
 ## License
 
