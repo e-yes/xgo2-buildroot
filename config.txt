@@ -12,6 +12,16 @@ kernel=Image
 # To use an external initramfs file
 #initramfs rootfs.cpio.gz
 
+[all]
+# Enable the audio output, I2C and SPI interfaces on the GPIO header. As these
+# parameters related to the base device-tree they must appear *before* any
+# other dtoverlay= specification
+#dtparam=audio=on
+dtparam=i2c_arm=on
+dtparam=spi=on
+dtpatam=i2s=on
+dtoverlay=wm8960-soundcard
+
 # Disable overscan assuming the display supports displaying the full resolution
 # If the text shown on the screen disappears off the edge, comment this out
 disable_overscan=1
@@ -29,9 +39,13 @@ dtoverlay=miniuart-bt
 #dtoverlay=krnbt=on
 
 #dtoverlay=vc4-kms-v3d-pi4
-#dtoverlay=imx219
 dtoverlay=ov5647
 #dtoverlay=dwc2,dr_mode=host
+
+# Autoload overlays for any recognized cameras or displays that are attached
+# to the CSI/DSI ports. Please note this is for libcamera support, *not* for
+# the legacy camera stack
+#camera_auto_detect=1
 
 # enable 64bits support
 arm_64bit=1
