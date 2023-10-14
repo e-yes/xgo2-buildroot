@@ -1,0 +1,2 @@
+SUBSYSTEM=="spidev", GROUP="pi", MODE="0660"
+SUBSYSTEM=="bcm2835-gpiomem", GROUP="pi", MODE="0660"
