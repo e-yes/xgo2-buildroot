@@ -25,14 +25,15 @@ jobs:
       - run:
           name: Compress sdcard.img
           command: | 
-            rm -f output/images/sdcard*img.gz
+            rm -f output/images/sdcard*img.gz output/ci/*
             gzip -9 -f output/images/sdcard.img
             git config --global --add safe.directory /var/opt/circleci/workdir
             export TAG=$(git describe --tags --always)
-            mv output/images/sdcard.img.gz output/images/sdcard-$TAG.img.gz
+            mkdir -p output/ci
+            mv output/images/sdcard.img.gz output/ci/sdcard-$TAG.img.gz
 
       - store_artifacts:
-          path: output/images
+          path: output/ci
 
 workflows:
   version: 2
