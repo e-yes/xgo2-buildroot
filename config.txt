@@ -39,13 +39,13 @@ dtoverlay=miniuart-bt
 #dtoverlay=krnbt=on
 
 #dtoverlay=vc4-kms-v3d-pi4
-dtoverlay=ov5647
+dtoverlay=ov5647,cam1
 #dtoverlay=dwc2,dr_mode=host
 
 # Autoload overlays for any recognized cameras or displays that are attached
 # to the CSI/DSI ports. Please note this is for libcamera support, *not* for
 # the legacy camera stack
-#camera_auto_detect=1
+camera_auto_detect=1
 
 # enable 64bits support
 arm_64bit=1
