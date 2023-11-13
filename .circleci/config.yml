@@ -11,7 +11,11 @@ jobs:
       - run:
           name: Clone Buildroot
           command: |
-            git  --git-dir=buildroot/.git pull || git clone --branch 2023.08.x --depth 1 https://github.com/buildroot/buildroot.git buildroot
+            set +eo
+            git clone --branch 2023.08.x https://github.com/buildroot/buildroot.git buildroot
+            pushd buildroot
+            git pull
+            popd
 
       - run:
           name: Configure Buildroot
@@ -24,7 +28,7 @@ jobs:
 
       - run:
           name: Compress sdcard.img
-          command: | 
+          command: |
             rm -f output/images/sdcard*img.gz output/ci/*
             gzip -9 -f output/images/sdcard.img
             git config --global --add safe.directory /var/opt/circleci/workdir

@@ -2,7 +2,8 @@
 
 ![XGO2 mini/lite software](./res/catdog.jpg)
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/e-yes/xgo2-buildroot.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/e-yes/xgo2-buildroot/)
+![XGO2 mini/lite CI](https://github.com/e-yes/xgo2-buildroot/actions/workflows/xgo2-buildroot.yml/badge.svg)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/e-yes/xgo2-buildroot.svg?style=svg)](https://app.circleci.com/pipelines/github/e-yes)
 
 ## Build
 
@@ -45,6 +46,8 @@ In [1]: from xgolib import XGO
 In [2]: dog = XGO("xgomini")
 
 In [3]: dog.action(11) # I like this one:)
+
+In [4]: dog.unload_motors() # now doggy doesn't consume too much power
 ```
 - If you wonder what is IP-address of the dog, use `arp-scan --localnet` to discover it:
 ```
