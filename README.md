@@ -35,7 +35,6 @@ sudo dd if=output/images/sdcard.img of=/dev/mmcblk0 status=progress
 ```
 › ssh pi@192.168.214.65
 (pi@192.168.214.65) Password: 
-$ sudo su
 $ ipython
 Python 3.11.5 (main, Sep 22 2023, 23:40:52) [GCC 12.3.0]
 Type 'copyright', 'credits' or 'license' for more information
@@ -43,14 +42,23 @@ IPython 8.8.0 -- An enhanced Interactive Python. Type '?' for help.
 
 In [1]: from xgolib import XGO
 
-In [2]: dog = XGO("xgomini")
+In [2]: dog = XGO("xgomini") # argument doesn't really matter
 
 In [3]: dog.action(11) # I like this one:)
 
-In [4]: dog.unload_motors() # now doggy doesn't consume too much power
+In [4]: dog.unload_allmotor() # doggy now uses less power
 ```
+
+Or use gentle one-liner:
+```
+python -c "from time import sleep; from xgolib import XGO; dog = XGO('meow'); dog.action(1); sleep(1.5); dog.unload_allmotor()"
+
+# works in opposite direction
+python -c "from xgolib import XGO; dog = XGO('meow'); dog.load_allmotor()"
+```
+
 - If you wonder what is IP-address of the dog, use `arp-scan --localnet` to discover it:
-```
+```sh
 # arp-scan --localnet
 Interface: wlan0, type: EN10MB, MAC: 30:24:32:b7:d6:62, IPv4: 192.168.214.117
 Starting arp-scan 1.9.7 with 256 hosts (https://github.com/royhills/arp-scan)
