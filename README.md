@@ -14,6 +14,7 @@ mkdir xgo2 && cd xgo2
 git clone git://git.busybox.net/buildroot
 git clone https://github.com/e-yes/xgo2-buildroot.git
 cd buildroot
+git checkout 2023.11.x
 make BR2_EXTERNAL=../xgo2-buildroot/ xgo2_defconfig
 make -j # you can specify how many CPU cores it can use for build
 ```
