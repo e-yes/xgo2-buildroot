@@ -7,7 +7,7 @@ on:
       - 'releases/v*'
 jobs:
   build-all:
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     strategy:
       matrix:
         config: [ xgo2 ]
