@@ -5,6 +5,8 @@ After=dbus.service
 Wants=network.target
 
 [Service]
+Restart=on-failure
+RestartSec=5s
 Type=dbus
 BusName=fi.w1.wpa_supplicant1
 ExecStart=/usr/sbin/wpa_supplicant -iwlan0 -Dnl80211 -c/etc/wpa_supplicant.conf -s -u -O /run/wpa_supplicant
