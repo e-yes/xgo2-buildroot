@@ -12,7 +12,7 @@ jobs:
           name: Clone Buildroot
           command: |
             set +eo
-            git clone --branch 2023.11.x https://github.com/buildroot/buildroot.git buildroot
+            git clone --branch 2024.02.x https://github.com/buildroot/buildroot.git buildroot
             pushd buildroot
             git pull
             popd
