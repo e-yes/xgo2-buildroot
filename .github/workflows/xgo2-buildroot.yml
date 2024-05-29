@@ -12,10 +12,10 @@ jobs:
       matrix:
         config: [ xgo2 ]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: xgo2-buildroot
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: buildroot/buildroot
           ref: 2024.02.x
