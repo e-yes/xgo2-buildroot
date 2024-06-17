@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build-all:
     machine: true
-    resource_class: e-yes/xgo2-buildroot
+    resource_class: e-yes/xgo2-br
 
     steps:
       - checkout
@@ -47,6 +47,4 @@ workflows:
           filters:
             branches:
               only:
-                - master
-                - /releases\/v.*/
                 - develop

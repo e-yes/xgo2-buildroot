@@ -2,8 +2,8 @@
 
 ![XGO2 mini/lite software](./res/catdog.jpg)
 
-![XGO2 mini/lite CI](https://github.com/e-yes/xgo2-buildroot/actions/workflows/xgo2-buildroot.yml/badge.svg)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/e-yes/xgo2-buildroot.svg?style=svg)](https://app.circleci.com/pipelines/github/e-yes)
+[![CI](https://github.com/e-yes/xgo2-buildroot/actions/workflows/xgo2-buildroot.yml/badge.svg)](https://github.com/e-yes/xgo2-buildroot/actions)
+[![develop](https://circleci.com/gh/e-yes/xgo2-buildroot/tree/develop.svg?style=svg)](https://app.circleci.com/pipelines/github/e-yes)
 
 ## Build
 

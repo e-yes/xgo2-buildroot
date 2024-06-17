@@ -23,11 +23,13 @@ jobs:
       - name: Configure Buildroot
         run: tree ../../ && make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output ${{ matrix.config }}_defconfig
       - name: Build Buildroot
-        run: make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output
+        run: |
+               rm -rf output/images/sdcard.img.xz
+               make -C buildroot BR2_EXTERNAL=../xgo2-buildroot O=../output
       - name: Compress sdcard.img
-        run: gzip -9 output/images/sdcard.img
+        run: xz output/images/sdcard.img
       - name: Store images
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: image-${{ matrix.config }}
-          path: output/images/sdcard.img.gz
+          path: output/images/sdcard.img.xz
